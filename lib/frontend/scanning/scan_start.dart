@@ -33,7 +33,7 @@ class _Scan2State extends State<Scan1> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "scan1",
+      title: "Scan Start",
       theme: ThemeData(
         useMaterial3: false,
         colorScheme: ColorScheme.fromSwatch(
