@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:asco_online_tracking/homepage.dart';
+import 'package:asco_online_tracking/frontend/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,11 +12,11 @@ void main() {
         primarySwatch: Colors.red,
       ),
     ),
-    home: MyApp(),
+    home: MainPage(),
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MainPage extends StatelessWidget {
   int duration = 3000;
   String splash_logo = 'assets/asc_tv_logo.png';
 
