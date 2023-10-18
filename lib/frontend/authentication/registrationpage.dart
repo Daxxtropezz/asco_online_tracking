@@ -5,36 +5,35 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "main",
+    title: "registrationpage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: Colors.red,
       ),
     ),
-    home: MainPage(),
+    home: RegistrationPage(),
   ));
 }
 
-class MainPage extends StatefulWidget {
+class RegistrationPage extends StatefulWidget {
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _MainPageState extends State<MainPage> {
-  int duration = 1000;
-
-  String splash_logo = 'assets/asc_tv_logo.png';
-
+class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-      duration: duration,
-      splash: splash_logo,
-      nextScreen: AuthenticationPage(),
-      splashTransition: SplashTransition.slideTransition,
-      backgroundColor: Colors.white,
-      splashIconSize: 150,
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Icon(Icons.app_registration),
+            SizedBox(width: 8),
+            Text("Register"),
+          ],
+        ),
+      ),
     );
   }
 }
