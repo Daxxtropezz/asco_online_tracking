@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:asco_online_tracking/frontend/authentication/authenticationpage.dart';
+import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,7 +31,7 @@ class _MainPageState extends State<MainPage> {
     return AnimatedSplashScreen(
       duration: duration,
       splash: splash_logo,
-      nextScreen: AuthenticationPage(),
+      nextScreen: AuthPage(),
       splashTransition: SplashTransition.slideTransition,
       backgroundColor: Colors.white,
       splashIconSize: 150,

@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:asco_online_tracking/frontend/authentication/authenticationpage.dart';
+import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +30,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           children: [
             Icon(Icons.app_registration),
             SizedBox(width: 8),
-            Text("Register"),
+            Text("Register to ASCo: Track"),
           ],
         ),
       ),

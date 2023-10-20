@@ -12,16 +12,16 @@ void main() {
         primarySwatch: Colors.red,
       ),
     ),
-    home: AuthenticationPage(),
+    home: AuthPage(),
   ));
 }
 
-class AuthenticationPage extends StatefulWidget {
+class AuthPage extends StatefulWidget {
   @override
-  State<AuthenticationPage> createState() => _AuthenticationPageState();
+  State<AuthPage> createState() => _AuthPageState();
 }
 
-class _AuthenticationPageState extends State<AuthenticationPage> {
+class _AuthPageState extends State<AuthPage> {
   int userIndex = 0;
   List<Widget> pageList = [LoginPage(), RegistrationPage()];
 
@@ -33,7 +33,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
       //     children: [
       //       Icon(Icons.home),
       //       SizedBox(width: 8),
-      //       Text("Homepage"),
+      //       Text("AuthPage"),
       //     ],
       //   ),
       // ),
@@ -53,9 +53,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         currentIndex: userIndex,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.login),
-              label: 'ASC Login!',
-              backgroundColor: Colors.red),
+            icon: Icon(Icons.login),
+            label: 'ASC Login!',
+            backgroundColor: Colors.red,
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.app_registration),
               label: 'ASC Register!',

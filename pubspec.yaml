@@ -75,6 +75,7 @@ flutter:
   assets:
     - assets/bg_main.png
     - assets/asc_logo.png
+    - assets/asc_logo_orig.png
     - assets/asc_tv_logo.png
     - assets/asc_video.mp4
 
