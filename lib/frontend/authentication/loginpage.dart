@@ -32,8 +32,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.login),
+            // Icon(Icons.login),
             SizedBox(width: 8),
             Text("Login to ASCo: Track"),
           ],

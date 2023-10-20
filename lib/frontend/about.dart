@@ -52,6 +52,7 @@ class AboutApp extends StatelessWidget {
               color: Colors.black.withOpacity(0.8),
             ),
             Container(
+              margin: EdgeInsets.all(60.0),
               child: Center(
                 child: Column(
                   children: [
@@ -67,7 +68,6 @@ class AboutApp extends StatelessWidget {
                   ],
                 ),
               ),
-              margin: EdgeInsets.all(60.0),
             ),
             Center(
               child: Column(
@@ -79,6 +79,8 @@ class AboutApp extends StatelessWidget {
                       color: Color.fromRGBO(32, 20, 20, 80),
                       borderRadius: BorderRadius.circular(40.0),
                     ),
+                    padding: EdgeInsets.fromLTRB(23, 30, 23, 80),
+                    margin: EdgeInsets.all(30.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -98,8 +100,6 @@ class AboutApp extends StatelessWidget {
                         ),
                       ],
                     ),
-                    padding: EdgeInsets.fromLTRB(23, 30, 23, 80),
-                    margin: EdgeInsets.all(30.0),
                   ),
                 ],
               ),
