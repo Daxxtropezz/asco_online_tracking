@@ -1,14 +1,14 @@
-import 'package:asco_online_tracking/frontend/homepage.dart';
+import 'package:asco_online_tracking/frontend/main/homepage.dart';
 import 'package:asco_online_tracking/frontend/logs/logs.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
-import 'package:asco_online_tracking/frontend/about.dart';
+import 'package:asco_online_tracking/frontend/main/about.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "main",
+    title: "selectionpage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(
@@ -51,7 +51,7 @@ class _SelectionPageState extends State<SelectionPage> {
           buttonBackgroundColor: Colors.red,
           animationDuration: Duration(milliseconds: 400),
           index: homeIndex,
-          animationCurve: Curves.fastOutSlowIn,
+          animationCurve: Curves.easeInOutCubicEmphasized,
           key: _bottomNavigationKey,
           onTap: (index) {
             setState(() {
@@ -68,7 +68,7 @@ class _SelectionPageState extends State<SelectionPage> {
               label: 'Logs',
               labelStyle: TextStyle(
                 color: Colors.red,
-                fontSize: 16,
+                fontSize: 12,
               ),
             ),
             CurvedNavigationBarItem(
@@ -87,7 +87,7 @@ class _SelectionPageState extends State<SelectionPage> {
               label: 'About',
               labelStyle: TextStyle(
                 color: Colors.red,
-                fontSize: 16,
+                fontSize: 12,
               ),
             ),
           ],

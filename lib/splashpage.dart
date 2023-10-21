@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "main",
+    title: "splashpage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(

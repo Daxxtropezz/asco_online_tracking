@@ -3,12 +3,12 @@ import 'package:asco_online_tracking/frontend/logs/logs.dart';
 import 'package:asco_online_tracking/frontend/scanning/scan_start.dart';
 import 'package:asco_online_tracking/frontend/video/vrec_start.dart';
 import 'package:flutter/material.dart';
-import 'package:asco_online_tracking/frontend/about.dart';
+import 'package:asco_online_tracking/frontend/main/about.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "main",
+    title: "homepage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   double buttonWidth = 230.0;
 
   // for the width of the SCAN button
-  double buttonMargin = 20.0;
+  double buttonMargin = 10.0;
 
   // increased margin between buttons
   double bRadius = 15.0;
@@ -40,110 +40,110 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _onBackPressed,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              Icon(Icons.home),
-              SizedBox(width: 8),
-              Text("Homepage"),
-            ],
-          ),
-        ),
-        body: Stack(
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
           children: [
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                'assets/bg_main.png',
-                fit: BoxFit.fitWidth,
-              ),
+            Icon(Icons.home),
+            SizedBox(width: 8),
+            Text("Homepage"),
+          ],
+        ),
+      ),
+      body: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/bg_main.png',
+              fit: BoxFit.fitWidth,
             ),
-            Container(
-              color: Colors.white.withOpacity(0.6),
-            ),
-            SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(40.0),
-                      child: Center(
-                        child: Text(
-                          'ASCo: Track',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 36,
-                            fontWeight: FontWeight.w500,
-                          ),
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.6),
+          ),
+          SingleChildScrollView(
+            child: Center(
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(40.0),
+                    child: Center(
+                      child: Text(
+                        'ASCo: Track',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 36,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
-                    Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(buttonMargin),
-                                child: SizedBox(
-                                  width: buttonWidth,
-                                  height: buttonSize,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Scan1()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      elevation: 5,
-                                      shadowColor: Colors.black,
-                                      padding: EdgeInsets.zero,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(bRadius),
-                                      ),
-                                    ),
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(Icons.camera_alt),
-                                          SizedBox(height: 8),
-                                          Text('SCAN'),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: buttonMargin),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Column(
                           children: [
                             Padding(
                               padding: EdgeInsets.all(buttonMargin),
                               child: SizedBox(
-                                width: buttonSize,
+                                width: buttonWidth,
+                                height: buttonSize,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Scan1()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    elevation: 5,
+                                    shadowColor: Colors.black,
+                                    padding: EdgeInsets.zero,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(bRadius),
+                                    ),
+                                  ),
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(Icons.camera_alt),
+                                        SizedBox(height: 8),
+                                        Text('SCAN'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: buttonMargin),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(buttonMargin),
+                              child: SizedBox(
+                                width: buttonWidth,
                                 height: buttonSize,
                                 child: ElevatedButton(
                                   onPressed: () {
@@ -178,12 +178,21 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: buttonMargin),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
                         Column(
                           children: [
                             Padding(
                               padding: EdgeInsets.all(buttonMargin),
                               child: SizedBox(
-                                width: buttonSize,
+                                width: buttonWidth,
                                 height: buttonSize,
                                 child: ElevatedButton(
                                   onPressed: () {
@@ -220,34 +229,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: buttonMargin),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: buttonMargin),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
-  }
-
-  Future<bool> _onBackPressed() {
-    if (_doubleBackToExitPressedOnce) {
-      return Future.value(true);
-    }
-
-    _doubleBackToExitPressedOnce = true;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Repeat action to exit"),
-        duration: Duration(seconds: 2),
-      ),
-    );
-
-    Future.delayed(Duration(seconds: 2), () {
-      _doubleBackToExitPressedOnce = false;
-    });
-
-    return Future.value(false);
   }
 }
