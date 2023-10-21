@@ -24,6 +24,7 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   int userIndex = 0;
   List<Widget> pageList = [LoginPage(), RegistrationPage()];
+  bool _doubleBackToExitPressedOnce = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,11 @@ class _AuthPageState extends State<AuthPage> {
       //     ],
       //   ),
       // ),
-      body: Center(
-        child: pageList[userIndex],
+      body: WillPopScope(
+        onWillPop: _onBackPressed,
+        child: Center(
+          child: pageList[userIndex],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
@@ -64,5 +68,25 @@ class _AuthPageState extends State<AuthPage> {
         ],
       ),
     );
+  }
+
+  Future<bool> _onBackPressed() {
+    if (_doubleBackToExitPressedOnce) {
+      return Future.value(true);
+    }
+
+    _doubleBackToExitPressedOnce = true;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Repeat action to exit"),
+        duration: Duration(seconds: 2),
+      ),
+    );
+
+    Future.delayed(Duration(seconds: 2), () {
+      _doubleBackToExitPressedOnce = false;
+    });
+
+    return Future.value(false);
   }
 }

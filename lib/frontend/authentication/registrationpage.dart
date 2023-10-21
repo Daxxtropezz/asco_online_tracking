@@ -1,5 +1,6 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,7 +29,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final phoneController = TextEditingController();
   final passController = TextEditingController();
   final cPassController = TextEditingController();
-  final prefixNumber = '+639';
+  final prefixNumber = '+63';
   final suffixEmail = '@asc.com.ph';
   String? eMailAdd;
   String? phoneNumber;
@@ -134,7 +135,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         //         .hasMatch(value!);
                         if (value!.isEmpty) {
                           return "Please enter Mobile number!";
-                        } else if (value.length < 9) {
+                        } else if (value.length < 10) {
                           return "Invalid phone formatting!";
                         }
                         // else if (!isPhoneValid) {
@@ -144,7 +145,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       onChanged: (value) {
                         phoneNumber = '$prefixNumber$value';
                       },
-                      maxLength: 9,
+                      maxLength: 10,
                     ),
                     SizedBox(
                       height: 20,
@@ -217,11 +218,29 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                     InkWell(
                       onTap: () {
+                        print('object1');
                         if (_formField.currentState!.validate()) {
-                          print("Login Success!");
-                          print('$phoneNumber $eMailAdd');
-                          // emailController.clear();
-                          // passController.clear();
+                          print('object2');
+                          CupertinoAlertDialog(
+                            title: Text('Warning'),
+                            content: Text(
+                                'Are you sure your credentials are correct?'),
+                            actions: <CupertinoDialogAction>[
+                              CupertinoDialogAction(
+                                isDestructiveAction: true,
+                                onPressed: () {
+                                  // Navigator.pop(context);
+                                },
+                                child: Text('Return'),
+                              ),
+                              CupertinoDialogAction(
+                                onPressed: () {
+                                  onConfirm();
+                                },
+                                child: Text('Absolutely'),
+                              ),
+                            ],
+                          );
                         }
                       },
                       child: Container(
@@ -249,6 +268,29 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
         ],
       ),
+    );
+  }
+
+  void onConfirm() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Registration Success!\nPlease click the activation link we've sent to your email!",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        duration: Duration(
+          seconds: 2,
+        ),
+      ),
+    );
+    print('$phoneNumber $eMailAdd');
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => AuthPage(),
+      ),
+      (route) => false,
     );
   }
 }
