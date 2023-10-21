@@ -42,6 +42,7 @@ dependencies:
   auto_size_text: ^3.0.0
   cunning_document_scanner: ^1.1.2
   livespeechtotext: ^1.0.9
+  curved_labeled_navigation_bar: ^2.0.2
 
 dev_dependencies:
   flutter_test:

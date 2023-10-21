@@ -29,15 +29,6 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Row(
-      //     children: [
-      //       Icon(Icons.home),
-      //       SizedBox(width: 8),
-      //       Text("AuthPage"),
-      //     ],
-      //   ),
-      // ),
       body: WillPopScope(
         onWillPop: _onBackPressed,
         child: Center(
@@ -62,9 +53,10 @@ class _AuthPageState extends State<AuthPage> {
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.app_registration),
-              label: 'ASC Register!',
-              backgroundColor: Colors.red)
+            icon: Icon(Icons.app_registration),
+            label: 'ASC Register!',
+            backgroundColor: Colors.red,
+          )
         ],
       ),
     );

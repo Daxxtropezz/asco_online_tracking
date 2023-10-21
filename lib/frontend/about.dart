@@ -3,13 +3,6 @@ import 'package:flutter/material.dart';
 class AboutApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bool isAndroid = false;
-
-    try {
-      isAndroid = Theme.of(context).platform == TargetPlatform.android;
-    } catch (e) {
-      isAndroid = false;
-    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -24,14 +17,7 @@ class AboutApp extends StatelessWidget {
         appBar: AppBar(
           title: Row(
             children: [
-              if (isAndroid)
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              Icon(Icons.receipt_long),
+              Icon(Icons.info),
               SizedBox(width: 8),
               Text("About This App"),
             ],
@@ -49,7 +35,7 @@ class AboutApp extends StatelessWidget {
               ),
             ),
             Container(
-              color: Colors.black.withOpacity(0.8),
+              color: Colors.white.withOpacity(0.6),
             ),
             Container(
               margin: EdgeInsets.all(60.0),
@@ -60,7 +46,7 @@ class AboutApp extends StatelessWidget {
                       'ASCo: Track',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 36,
                         fontWeight: FontWeight.w500,
                       ),

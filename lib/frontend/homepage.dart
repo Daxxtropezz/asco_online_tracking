@@ -15,27 +15,27 @@ void main() {
         primarySwatch: Colors.red,
       ),
     ),
-    home: Homepage(),
+    home: HomePage(),
   ));
 }
 
-class Homepage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomePageState extends State<HomePage> {
   double buttonSize = 100.0;
 
   double buttonWidth = 230.0;
 
- // for the width of the SCAN button
+  // for the width of the SCAN button
   double buttonMargin = 20.0;
 
- // increased margin between buttons
+  // increased margin between buttons
   double bRadius = 15.0;
 
- // increased margin between buttons
+  // increased margin between buttons
   bool _doubleBackToExitPressedOnce = false;
 
   @override
@@ -64,7 +64,7 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
             Container(
-              color: Colors.black.withOpacity(0.8),
+              color: Colors.white.withOpacity(0.6),
             ),
             SingleChildScrollView(
               child: Center(
@@ -79,7 +79,7 @@ class _HomepageState extends State<Homepage> {
                           'ASCo: Track',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 36,
                             fontWeight: FontWeight.w500,
                           ),
@@ -112,7 +112,7 @@ class _HomepageState extends State<Homepage> {
                                       padding: EdgeInsets.zero,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(bRadius),
+                                        BorderRadius.circular(bRadius),
                                       ),
                                     ),
                                     child: Align(
@@ -159,7 +159,7 @@ class _HomepageState extends State<Homepage> {
                                     padding: EdgeInsets.zero,
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
-                                          BorderRadius.circular(bRadius),
+                                      BorderRadius.circular(bRadius),
                                     ),
                                   ),
                                   child: Align(
@@ -199,7 +199,7 @@ class _HomepageState extends State<Homepage> {
                                     padding: EdgeInsets.zero,
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
-                                          BorderRadius.circular(bRadius),
+                                      BorderRadius.circular(bRadius),
                                     ),
                                   ),
                                   child: Align(
@@ -210,92 +210,6 @@ class _HomepageState extends State<Homepage> {
                                         Icon(Icons.smart_screen),
                                         SizedBox(height: 8),
                                         Text('V-REC'),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: buttonMargin),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(buttonMargin),
-                              child: SizedBox(
-                                width: buttonSize,
-                                height: buttonSize,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LogsApp()),
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 5,
-                                    shadowColor: Colors.black,
-                                    padding: EdgeInsets.zero,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(bRadius),
-                                    ),
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(Icons.receipt_long),
-                                        SizedBox(height: 8),
-                                        Text('LOGS'),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(buttonMargin),
-                              child: SizedBox(
-                                width: buttonSize,
-                                height: buttonSize,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AboutApp()),
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 5,
-                                    shadowColor: Colors.black,
-                                    padding: EdgeInsets.zero,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(bRadius),
-                                    ),
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(Icons.info),
-                                        SizedBox(height: 8),
-                                        Text('ABOUT'),
                                       ],
                                     ),
                                   ),

@@ -12,18 +12,17 @@ void main() {
         primarySwatch: Colors.red,
       ),
     ),
-    home: MainPage(),
+    home: SplashPage(),
   ));
 }
 
-class MainPage extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _SplashPageState extends State<SplashPage> {
   int duration = 1000;
-
   String splash_logo = 'assets/asc_tv_logo.png';
 
   @override

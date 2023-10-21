@@ -1,4 +1,4 @@
-import 'package:asco_online_tracking/frontend/homepage.dart';
+import 'package:asco_online_tracking/frontend/selectionpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                           print("Login Success!");
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => Homepage(),
+                              builder: (context) => SelectionPage(),
                             ),
                             (route) => false,
                           );

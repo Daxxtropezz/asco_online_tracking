@@ -11,14 +11,6 @@ class LogsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isAndroid = false;
-
-    try {
-      isAndroid = Theme.of(context).platform == TargetPlatform.android;
-    } catch (e) {
-      isAndroid = false;
-    }
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LogsApp',
@@ -29,13 +21,6 @@ class LogsApp extends StatelessWidget {
         appBar: AppBar(
           title: Row(
             children: [
-              if (isAndroid)
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
               Icon(Icons.receipt_long),
               SizedBox(width: 8),
               Text("Recent Logs"),
@@ -55,7 +40,7 @@ class LogsApp extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Colors.black.withOpacity(0.8),
+                color: Colors.white.withOpacity(0.6),
               ),
               RecentLogsApp(),
             ],
@@ -153,12 +138,12 @@ class _RecentLogsAppState extends State<RecentLogsApp> {
       inputDecoration: InputDecoration(
         labelText: "Reference.No.",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
-        fillColor: Colors.white,
+        fillColor: Colors.black,
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.white,
+            color: Colors.black,
             width: 3.0,
           ),
           borderRadius: BorderRadius.circular(18.0),
@@ -253,7 +238,7 @@ class EmptyView extends StatelessWidget {
         Text(
           'No Reference.No. found!',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ],
