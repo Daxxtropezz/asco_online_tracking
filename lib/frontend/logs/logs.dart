@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:searchable_listview/searchable_listview.dart';
 
 void main() {
-  runApp(const LogsApp());
+  runApp(LogsApp());
 }
 
-class LogsApp extends StatelessWidget {
-  const LogsApp({Key? key}) : super(key: key);
+class LogsApp extends StatefulWidget {
+  LogsApp({Key? key}) : super(key: key);
 
+  @override
+  State<LogsApp> createState() => _LogsAppState();
+}
+
+class _LogsAppState extends State<LogsApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +57,7 @@ class LogsApp extends StatelessWidget {
 }
 
 class RecentLogsApp extends StatefulWidget {
-  const RecentLogsApp({Key? key}) : super(key: key);
+  RecentLogsApp({Key? key}) : super(key: key);
 
   @override
   State<RecentLogsApp> createState() => _RecentLogsAppState();
@@ -73,25 +78,9 @@ class _RecentLogsAppState extends State<RecentLogsApp> {
       width: double.infinity,
       child: Column(
         children: [
-          // Container(
-          //   child: Center(
-          //     child: Padding(
-          //       padding: const EdgeInsets.fromLTRB(50, 50, 50, 10),
-          //       child: Text(
-          //         'ASCo: Track',
-          //         textAlign: TextAlign.center,
-          //         style: TextStyle(
-          //           color: Colors.white,
-          //           fontSize: 36,
-          //           fontWeight: FontWeight.w500,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(30, 40, 30, 10),
+              padding: EdgeInsets.fromLTRB(30, 40, 30, 10),
               child: renderAsynchSearchableListview(),
             ),
           ),
@@ -120,7 +109,7 @@ class _RecentLogsAppState extends State<RecentLogsApp> {
         return ASCRefCodeItem(ascRefCode: displayedList[itemIndex]);
       },
       asyncListCallback: () async {
-        await Future.delayed(const Duration(seconds: 5));
+        await Future.delayed(Duration(seconds: 5));
         return ascRefCodes;
       },
       asyncListFilter: (query, list) {
@@ -131,10 +120,10 @@ class _RecentLogsAppState extends State<RecentLogsApp> {
             .toList();
       },
       seperatorBuilder: (context, index) {
-        return const Divider();
+        return Divider();
       },
-      style: const TextStyle(fontSize: 25),
-      emptyWidget: const EmptyView(),
+      style: TextStyle(fontSize: 25),
+      emptyWidget: EmptyView(),
       inputDecoration: InputDecoration(
         labelText: "Reference.No.",
         labelStyle: TextStyle(
@@ -142,7 +131,7 @@ class _RecentLogsAppState extends State<RecentLogsApp> {
         ),
         fillColor: Colors.black,
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
+          borderSide: BorderSide(
             color: Colors.black,
             width: 3.0,
           ),
@@ -156,7 +145,7 @@ class _RecentLogsAppState extends State<RecentLogsApp> {
 class ASCRefCodeItem extends StatelessWidget {
   final ASCRefCode ascRefCode;
 
-  const ASCRefCodeItem({
+  ASCRefCodeItem({
     Key? key,
     required this.ascRefCode,
   }) : super(key: key);
@@ -166,15 +155,16 @@ class ASCRefCodeItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // Navigate to the logs_refno.dart screen and pass data as arguments
-        Navigator.of(context).push(
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) =>
                 LogsRefNo(referenceNo: ascRefCode.referenceNo),
           ),
+          (route) => true,
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0),
         child: Container(
           height: 60,
           decoration: BoxDecoration(
@@ -183,14 +173,14 @@ class ASCRefCodeItem extends StatelessWidget {
           ),
           child: Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
               Icon(
                 Icons.qr_code,
                 color: Colors.white,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
               Column(
@@ -199,7 +189,7 @@ class ASCRefCodeItem extends StatelessWidget {
                 children: [
                   Text(
                     '${ascRefCode.referenceNo}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -207,7 +197,7 @@ class ASCRefCodeItem extends StatelessWidget {
                   ),
                   Text(
                     'Validity Date: ${ascRefCode.refValidity}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.amberAccent,
                       fontWeight: FontWeight.bold,
                     ),
@@ -223,7 +213,7 @@ class ASCRefCodeItem extends StatelessWidget {
 }
 
 class EmptyView extends StatelessWidget {
-  const EmptyView({Key? key}) : super(key: key);
+  EmptyView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

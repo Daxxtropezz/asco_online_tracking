@@ -1,3 +1,4 @@
+import 'package:asco_online_tracking/frontend/main/accountpage.dart';
 import 'package:asco_online_tracking/frontend/main/homepage.dart';
 import 'package:asco_online_tracking/frontend/logs/logs.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
@@ -39,19 +40,19 @@ class _SelectionPageState extends State<SelectionPage>
   late Animation<double> _animation;
   late AnimationController _animController;
   IconData currentIcon = Icons.menu;
-  Color currentColor = Colors.white;
-  Color currentBG = Colors.red;
+  Color currentColor = Colors.red;
+  Color currentBG = Colors.white;
   bool isMenuOpen = false;
 
   @override
   void initState() {
     _animController = AnimationController(
-      duration: Duration(milliseconds: 260),
+      duration: Duration(milliseconds: 200),
       vsync: this,
     );
 
     final curvedAnimation =
-        CurvedAnimation(curve: Curves.easeInOut, parent: _animController);
+        CurvedAnimation(curve: Curves.easeInOutCubic, parent: _animController);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
     super.initState();
@@ -114,9 +115,9 @@ class _SelectionPageState extends State<SelectionPage>
           items: [
             Bubble(
               icon: Icons.receipt_long,
-              iconColor: Colors.white,
+              iconColor: Colors.red,
               title: 'Recent Logs',
-              bubbleColor: Colors.red,
+              bubbleColor: Colors.white,
               onPress: () {
                 Navigator.push(
                   context,
@@ -126,17 +127,34 @@ class _SelectionPageState extends State<SelectionPage>
                 );
               },
               titleStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.red,
               ),
             ),
             Bubble(
               icon: Icons.account_circle,
-              iconColor: Colors.white,
+              iconColor: Colors.red,
               title: 'My Account',
-              bubbleColor: Colors.red,
+              bubbleColor: Colors.white,
+              onPress: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => AccountPage(),
+                  ),
+                  (route) => true,
+                );
+              },
+              titleStyle: TextStyle(
+                color: Colors.red,
+              ),
+            ),
+            Bubble(
+              icon: Icons.info_outline,
+              iconColor: Colors.red,
+              title: 'More Features Soon!',
+              bubbleColor: Colors.white,
               onPress: () {},
               titleStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.red,
               ),
             ),
           ],
@@ -147,9 +165,9 @@ class _SelectionPageState extends State<SelectionPage>
                 : _animController!.forward();
             setState(() {
               isMenuOpen = !isMenuOpen;
-              currentIcon = isMenuOpen ? Icons.close : Icons.menu;
-              currentColor = isMenuOpen ? Colors.red : Colors.white;
-              currentBG = isMenuOpen ? Colors.white : Colors.red;
+              currentIcon = isMenuOpen ? Icons.arrow_circle_left : Icons.menu;
+              currentColor = isMenuOpen ? Colors.white : Colors.red;
+              currentBG = isMenuOpen ? Colors.red : Colors.white;
             });
           },
           iconColor: currentColor,
