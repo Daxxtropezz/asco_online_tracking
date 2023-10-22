@@ -23,7 +23,6 @@ class EmailPage extends StatefulWidget {
 class _EmailPageState extends State<EmailPage> {
   final _formField = GlobalKey<FormState>();
   final emailController = TextEditingController();
-  final suffixEmail = '@asc.com.ph';
   String? eMailAdd;
 
   @override
@@ -61,25 +60,27 @@ class _EmailPageState extends State<EmailPage> {
                       controller: emailController,
                       decoration: InputDecoration(
                         labelText: "Email",
-                        suffixText: suffixEmail,
                         suffixStyle:
-                        TextStyle(color: Colors.black, fontSize: 16),
+                            TextStyle(color: Colors.black, fontSize: 16),
                         border: UnderlineInputBorder(),
                         prefixIcon: Icon(Icons.email),
                       ),
                       validator: (value) {
-                        // bool isEmailValid = RegExp(
-                        //         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        //     .hasMatch(value!);
-                        if (value!.isEmpty) {
-                          return "Please enter Email Address!";
+                        bool isEmailValid =
+                            RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
+                                .hasMatch(value!);
+                        bool isTextEntered =
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
+                        if (value.isEmpty) {
+                          return "Please enter email address!";
+                        } else if (isTextEntered) {
+                          return "Please enter a valid email address!";
+                        } else if (!isEmailValid) {
+                          return "Only exclusive email from asc is allowed!";
                         }
-                        // else if (!isEmailValid) {
-                        //   return "Invalid Email Address!";
-                        // }
                       },
                       onChanged: (value) {
-                        eMailAdd = '$value$suffixEmail';
+                        eMailAdd = '$value';
                       },
                     ),
                     SizedBox(
@@ -106,7 +107,7 @@ class _EmailPageState extends State<EmailPage> {
                             MaterialPageRoute(
                               builder: (context) => VerifyPage(),
                             ),
-                                (route) => true,
+                            (route) => true,
                           );
                         }
                       },

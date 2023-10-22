@@ -114,6 +114,33 @@ class _SelectionPageState extends State<SelectionPage>
         floatingActionButton: FloatingActionBubble(
           items: [
             Bubble(
+              icon: Icons.dashboard,
+              iconColor: Colors.red,
+              title: 'Dashboard',
+              bubbleColor: Colors.white,
+              onPress: () {},
+              titleStyle: TextStyle(
+                color: Colors.red,
+              ),
+            ),
+            Bubble(
+              icon: Icons.account_circle,
+              iconColor: Colors.red,
+              title: 'My Account',
+              bubbleColor: Colors.white,
+              onPress: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => AccountPage(),
+                  ),
+                      (route) => true,
+                );
+              },
+              titleStyle: TextStyle(
+                color: Colors.red,
+              ),
+            ),
+            Bubble(
               icon: Icons.receipt_long,
               iconColor: Colors.red,
               title: 'Recent Logs',
@@ -131,26 +158,9 @@ class _SelectionPageState extends State<SelectionPage>
               ),
             ),
             Bubble(
-              icon: Icons.account_circle,
+              icon: Icons.more_horiz,
               iconColor: Colors.red,
-              title: 'My Account',
-              bubbleColor: Colors.white,
-              onPress: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => AccountPage(),
-                  ),
-                  (route) => true,
-                );
-              },
-              titleStyle: TextStyle(
-                color: Colors.red,
-              ),
-            ),
-            Bubble(
-              icon: Icons.info_outline,
-              iconColor: Colors.red,
-              title: 'More Features Soon!',
+              title: 'More Features\nComing Soon!',
               bubbleColor: Colors.white,
               onPress: () {},
               titleStyle: TextStyle(

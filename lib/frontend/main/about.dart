@@ -48,7 +48,7 @@ class _AboutAppState extends State<AboutApp> {
                     height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Center(
                       child: Image.asset(
                         'assets/asc_tv_logo.png',
