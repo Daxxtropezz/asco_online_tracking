@@ -116,10 +116,11 @@ class _LogsAppState extends State<LogsApp> {
                               // Navigate to the logs_refno.dart screen and pass data as arguments
                               Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      LogsRefNoApp(referenceNo: _foundRefCodes[index]['refCode']),
+                                  builder: (context) => LogsRefNoApp(
+                                      referenceNo: _foundRefCodes[index]
+                                          ['refCode']),
                                 ),
-                                    (route) => true,
+                                (route) => true,
                               );
                             },
                             child: Card(
@@ -158,9 +159,25 @@ class _LogsAppState extends State<LogsApp> {
                             ),
                           ),
                         )
-                      : Text(
-                          'No results found',
-                          style: TextStyle(fontSize: 24),
+                      : Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.warning,
+                                  color: Colors.amber,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Ref.No. not found!',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                 ),
               ],
