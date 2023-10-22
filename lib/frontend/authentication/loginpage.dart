@@ -80,13 +80,17 @@ class _LoginPageState extends State<LoginPage> {
                         prefixIcon: Icon(Icons.email),
                       ),
                       validator: (value) {
-                        bool isEmailValid = RegExp(
-                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value!);
+                        bool isEmailValid =
+                            RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
+                                .hasMatch(value!);
+                        bool isTextEntered =
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
                         if (value.isEmpty) {
-                          return "Please enter Email Address!";
+                          return "Please enter email address!";
+                        } else if (isTextEntered) {
+                          return "Please enter a valid email address!";
                         } else if (!isEmailValid) {
-                          return "Please enter a valid Email Address!";
+                          return "Only exclusive email from asc is allowed!";
                         }
                       },
                     ),

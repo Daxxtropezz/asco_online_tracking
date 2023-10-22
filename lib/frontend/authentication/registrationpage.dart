@@ -30,7 +30,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final passController = TextEditingController();
   final cPassController = TextEditingController();
   final prefixNumber = '+63';
-  final suffixEmail = '@asc.com.ph';
   String? eMailAdd;
   String? phoneNumber;
   bool passToggle = true;
@@ -81,8 +80,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         prefixIcon: Icon(Icons.account_circle),
                       ),
                       validator: (value) {
+                        bool NumbersAndLetters = RegExp(r"^[A-Za-z0-9]+$").hasMatch(value!);
                         if (value!.isEmpty) {
                           return "Please enter Username!";
+                        } else if (!NumbersAndLetters) {
+                          return "Please use numbers and letters only!";
                         }
                       },
                     ),
@@ -94,25 +96,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       controller: emailController,
                       decoration: InputDecoration(
                         labelText: "Email",
-                        suffixText: suffixEmail,
                         suffixStyle:
                             TextStyle(color: Colors.black, fontSize: 16),
                         border: UnderlineInputBorder(),
                         prefixIcon: Icon(Icons.email),
                       ),
                       validator: (value) {
-                        // bool isEmailValid = RegExp(
-                        //         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        //     .hasMatch(value!);
-                        if (value!.isEmpty) {
-                          return "Please enter Email Address!";
+                        bool isEmailValid =
+                            RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
+                                .hasMatch(value!);
+                        bool isTextEntered =
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
+                        if (value.isEmpty) {
+                          return "Please enter email address!";
+                        } else if (isTextEntered) {
+                          return "Please enter a valid email address!";
+                        } else if (!isEmailValid) {
+                          return "Only exclusive email from asc is allowed!";
                         }
-                        // else if (!isEmailValid) {
-                        //   return "Invalid Email Address!";
-                        // }
                       },
                       onChanged: (value) {
-                        eMailAdd = '$value$suffixEmail';
+                        eMailAdd = '$value';
                       },
                     ),
                     SizedBox(
