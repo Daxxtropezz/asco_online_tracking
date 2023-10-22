@@ -1,7 +1,4 @@
-import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
-import 'package:asco_online_tracking/frontend/authentication/passwordpage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+import 'package:asco_online_tracking/frontend/authentication/verifypage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -107,7 +104,7 @@ class _EmailPageState extends State<EmailPage> {
                           print(' $eMailAdd');
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => PasswordPage(),
+                              builder: (context) => VerifyPage(),
                             ),
                                 (route) => true,
                           );

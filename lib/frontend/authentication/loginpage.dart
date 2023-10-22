@@ -162,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Forgot your password?',
+                          'Forgot password?',
                           style: TextStyle(
                             fontSize: 14,
                           ),

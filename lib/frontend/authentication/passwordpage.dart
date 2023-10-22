@@ -1,6 +1,4 @@
 import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -85,7 +83,7 @@ class _PasswordPageState extends State<PasswordPage> {
                           return "Your password's length should be more than 6 characters!";
                         } else if (passController.value !=
                             cPassController.value) {
-                          return "The password doesn't match!";
+                          return "The passwords doesn't match!";
                         }
                       },
                     ),
@@ -118,7 +116,7 @@ class _PasswordPageState extends State<PasswordPage> {
                           return "Your password's length should be more than 6 characters!";
                         } else if (cPassController.value !=
                             passController.value) {
-                          return "The password doesn't match!";
+                          return "The passwords doesn't match!";
                         }
                       },
                     ),
@@ -129,26 +127,11 @@ class _PasswordPageState extends State<PasswordPage> {
                       onTap: () {
                         print('object1');
                         if (_formField.currentState!.validate()) {
-                          print('object2');
-                          CupertinoAlertDialog(
-                            title: Text('Warning'),
-                            content: Text(
-                                'Are you sure your credentials are correct?'),
-                            actions: <CupertinoDialogAction>[
-                              CupertinoDialogAction(
-                                isDestructiveAction: true,
-                                onPressed: () {
-                                  // Navigator.pop(context);
-                                },
-                                child: Text('Return'),
-                              ),
-                              CupertinoDialogAction(
-                                onPressed: () {
-                                  onConfirm();
-                                },
-                                child: Text('Absolutely'),
-                              ),
-                            ],
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => AuthPage(),
+                            ),
+                                (route) => false,
                           );
                         }
                       },
@@ -177,28 +160,6 @@ class _PasswordPageState extends State<PasswordPage> {
           ),
         ],
       ),
-    );
-  }
-
-  void onConfirm() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          "Registration Success!\nPlease click the activation link we've sent to your email!",
-          style: TextStyle(
-            fontSize: 16,
-          ),
-        ),
-        duration: Duration(
-          seconds: 2,
-        ),
-      ),
-    );
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => AuthPage(),
-      ),
-          (route) => false,
     );
   }
 }
