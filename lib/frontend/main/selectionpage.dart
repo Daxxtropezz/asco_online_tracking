@@ -196,7 +196,7 @@ class _SelectionPageState extends State<SelectionPage>
     _doubleBackToExitPressedOnce = true;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Repeat action to exit"),
+        content: Text("Repeat Action to Exit ASCo: Track"),
         duration: Duration(seconds: 2),
       ),
     );

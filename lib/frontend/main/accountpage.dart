@@ -232,29 +232,8 @@ class _AccountPageState extends State<AccountPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        print('object1');
                         if (_formField.currentState!.validate()) {
-                          print('object2');
-                          CupertinoAlertDialog(
-                            title: Text('Warning'),
-                            content: Text(
-                                'Are you sure your credentials are correct?'),
-                            actions: <CupertinoDialogAction>[
-                              CupertinoDialogAction(
-                                isDestructiveAction: true,
-                                onPressed: () {
-                                  // Navigator.pop(context);
-                                },
-                                child: Text('Return'),
-                              ),
-                              CupertinoDialogAction(
-                                onPressed: () {
-                                  onConfirm();
-                                },
-                                child: Text('Absolutely'),
-                              ),
-                            ],
-                          );
+                          print('object1');
                         }
                       },
                       child: Container(
@@ -265,7 +244,37 @@ class _AccountPageState extends State<AccountPage> {
                         ),
                         child: Center(
                           child: Text(
-                            'Register',
+                            'Edit',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => AuthPage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Logout',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

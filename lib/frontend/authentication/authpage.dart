@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "authenticationpage",
+    title: "authpage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(
@@ -70,7 +70,7 @@ class _AuthPageState extends State<AuthPage> {
     _doubleBackToExitPressedOnce = true;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Repeat action to exit"),
+        content: Text("Repeat Action to Exit ASCo: Track"),
         duration: Duration(seconds: 2),
       ),
     );
