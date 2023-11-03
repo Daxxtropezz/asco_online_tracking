@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:asco_online_tracking/frontend/main/about.dart';
+import 'package:asco_online_tracking/main/about.dart';
 import 'package:flutter/material.dart';
 import 'package:before_after/before_after.dart';
 import 'package:auto_size_text/auto_size_text.dart';

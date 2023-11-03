@@ -1,9 +1,7 @@
-import 'package:asco_online_tracking/frontend/audio/arec_start.dart';
-import 'package:asco_online_tracking/frontend/logs/logs.dart';
-import 'package:asco_online_tracking/frontend/scanning/scan_start.dart';
-import 'package:asco_online_tracking/frontend/video/vrec_start.dart';
+import 'package:asco_online_tracking/audio/arec_start.dart';
+import 'package:asco_online_tracking/scanning/scan_start.dart';
+import 'package:asco_online_tracking/video/vrec_start.dart';
 import 'package:flutter/material.dart';
-import 'package:asco_online_tracking/frontend/main/about.dart';
 
 void main() {
   runApp(MaterialApp(

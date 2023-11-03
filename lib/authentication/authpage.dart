@@ -1,5 +1,5 @@
-import 'package:asco_online_tracking/frontend/authentication/loginpage.dart';
-import 'package:asco_online_tracking/frontend/authentication/registrationpage.dart';
+import 'package:asco_online_tracking/authentication/loginpage.dart';
+import 'package:asco_online_tracking/authentication/registrationpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

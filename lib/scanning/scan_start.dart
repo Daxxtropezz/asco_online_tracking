@@ -1,15 +1,15 @@
 import 'dart:io';
-import 'package:asco_online_tracking/frontend/scanning/scan_examine.dart';
+import 'package:asco_online_tracking/scanning/scan_examine.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 
-class Scan2 extends StatefulWidget {
+class Scan1 extends StatefulWidget {
   @override
-  State<Scan2> createState() => _Scan2State();
+  State<Scan1> createState() => _Scan2State();
 }
 
-class _Scan2State extends State<Scan2> {
+class _Scan2State extends State<Scan1> {
   var value = 0.5;
   List<String> _pictures = [];
 
@@ -33,7 +33,7 @@ class _Scan2State extends State<Scan2> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "scan1",
+      title: "Scan Start",
       theme: ThemeData(
         useMaterial3: false,
         colorScheme: ColorScheme.fromSwatch(
@@ -74,27 +74,51 @@ class _Scan2State extends State<Scan2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 30, 8, 8),
-                  child: Container(
-                    child: Text(
-                      'Ref.No. 00000000',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w400,
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(8, 30, 8, 8),
+                      child: Container(
+                        child: Text(
+                          'Ref.No. 00000000',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Center(
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                              onPressed: onPressed,
+                              child: const Text("Capture the Advertisement")),
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            spacing: 8.0,
+                            runSpacing: 8.0,
+                            children: _pictures.map((picture) {
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(15.0),
+                                child: Container(
+                                  width: 400,
+                                  height: 400,
+                                  child: Image.file(
+                                    File(picture),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Column(
-              children: [
-                ElevatedButton(
-                    onPressed: onPressed, child: const Text("Add Pictures")),
-                for (var picture in _pictures) Image.file(File(picture))
               ],
             ),
             Center(
@@ -115,7 +139,8 @@ class _Scan2State extends State<Scan2> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Scan3(pictures: _pictures)),
+                                    builder: (context) =>
+                                        Scan3(pictures: _pictures)),
                               );
                             },
                             style: ElevatedButton.styleFrom(

@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
+import 'package:asco_online_tracking/authentication/authpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

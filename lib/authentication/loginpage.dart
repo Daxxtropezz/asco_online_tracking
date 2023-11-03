@@ -1,6 +1,5 @@
-import 'package:asco_online_tracking/frontend/authentication/emailpage.dart';
-import 'package:asco_online_tracking/frontend/authentication/passwordpage.dart';
-import 'package:asco_online_tracking/frontend/main/selectionpage.dart';
+import 'package:asco_online_tracking/authentication/emailpage.dart';
+import 'package:asco_online_tracking/main/selectionpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -72,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 40,
                     ),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       decoration: InputDecoration(
@@ -85,19 +85,27 @@ class _LoginPageState extends State<LoginPage> {
                                 .hasMatch(value!);
                         bool isTextEntered =
                             RegExp(r"^[A-Za-z]+$").hasMatch(value!);
-                        if (value.isEmpty) {
-                          return "Please enter email address!";
-                        } else if (isTextEntered) {
-                          return "Please enter a valid email address!";
-                        } else if (!isEmailValid) {
-                          return "Only exclusive email from asc is allowed!";
-                        }
+                        // if (value.isEmpty) {
+                        //   return "Please enter email address!";
+                        // } else if (isTextEntered) {
+                        //   return "Please enter a valid email address!";
+                        // } else if (!isEmailValid) {
+                        //   return "Only exclusive email from asc is allowed!";
+                        // }
+                        value.isEmpty
+                            ? "Please enter your email address!"
+                            : isTextEntered
+                                ? "Please enter a valid email address"
+                                : !isEmailValid
+                                    ? "Only exclusive email from asc is allowed!"
+                                    : null;
                       },
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     TextFormField(
+                      textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.text,
                       controller: passController,
                       obscureText: passToggle,
@@ -119,11 +127,14 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Please enter your password!";
-                        } else if (passController.text.length < 6) {
-                          return "Your password's length should be more than 6 characters!";
-                        }
+                        value!.isEmpty
+                            ? "Please enter your password!"
+                            : passController.text.length < 6
+                                ? "Your password's length should be more than 6 characters!"
+                                : null;
+                      },
+                      onFieldSubmitted: (value) {
+                        loginValidation();
                       },
                     ),
                     SizedBox(
@@ -131,15 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        if (_formField.currentState!.validate()) {
-                          print("Login Success!");
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => SelectionPage(),
-                            ),
-                            (route) => false,
-                          );
-                        }
+                        loginValidation();
                       },
                       child: Container(
                         height: 50,
@@ -198,5 +201,17 @@ class _LoginPageState extends State<LoginPage> {
         ],
       ),
     );
+  }
+
+  void loginValidation() {
+    if (_formField.currentState!.validate()) {
+      print("Login Success!");
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => SelectionPage(),
+        ),
+        (route) => false,
+      );
+    }
   }
 }

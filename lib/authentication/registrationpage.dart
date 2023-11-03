@@ -1,33 +1,34 @@
-import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
+import 'package:asco_online_tracking/authentication/authpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "accountpage",
+    title: "registrationpage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: Colors.red,
       ),
     ),
-    home: AccountPage(),
+    home: RegistrationPage(),
   ));
 }
 
-class AccountPage extends StatefulWidget {
+class RegistrationPage extends StatefulWidget {
   @override
-  State<AccountPage> createState() => _AccountPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _RegistrationPageState extends State<RegistrationPage> {
   final _formField = GlobalKey<FormState>();
   final userController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
   final passController = TextEditingController();
   final cPassController = TextEditingController();
+  final passFocusNode = FocusNode();
   final prefixNumber = '+63';
   String? eMailAdd;
   String? phoneNumber;
@@ -38,8 +39,14 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text("Account Settings"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Icon(Icons.app_registration),
+            SizedBox(width: 8),
+            Text("Register to ASCo: Track"),
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -64,23 +71,8 @@ class _AccountPageState extends State<AccountPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.account_circle,
-                      size: 100,
-                      color: Colors.red,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Daxxtropezz',
-                      style: TextStyle(
-                        fontSize: 21,
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.text,
                       controller: userController,
                       decoration: InputDecoration(
@@ -102,6 +94,7 @@ class _AccountPageState extends State<AccountPage> {
                       height: 15,
                     ),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       decoration: InputDecoration(
@@ -133,12 +126,13 @@ class _AccountPageState extends State<AccountPage> {
                       height: 15,
                     ),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         labelText: "Mobile Number",
                         border: UnderlineInputBorder(),
                         prefixIcon: Icon(Icons.phone_android),
-                        prefixText: prefixNumber,
+                        prefixText: prefixNumber + " ",
                         counterText: '',
                         prefixStyle:
                             TextStyle(color: Colors.black, fontSize: 16),
@@ -165,6 +159,7 @@ class _AccountPageState extends State<AccountPage> {
                       height: 15,
                     ),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.text,
                       controller: passController,
                       obscureText: passToggle,
@@ -193,11 +188,16 @@ class _AccountPageState extends State<AccountPage> {
                           return "The password doesn't match!";
                         }
                       },
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context).requestFocus(passFocusNode);
+                      },
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     TextFormField(
+                      focusNode: passFocusNode,
+                      textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.text,
                       controller: cPassController,
                       obscureText: cPassToggle,
@@ -226,15 +226,16 @@ class _AccountPageState extends State<AccountPage> {
                           return "The password doesn't match!";
                         }
                       },
+                      onFieldSubmitted: (value) {
+                        regValidation();
+                      },
                     ),
                     SizedBox(
                       height: 40,
                     ),
                     InkWell(
                       onTap: () {
-                        if (_formField.currentState!.validate()) {
-                          print('object1');
-                        }
+                        regValidation();
                       },
                       child: Container(
                         height: 50,
@@ -244,37 +245,7 @@ class _AccountPageState extends State<AccountPage> {
                         ),
                         child: Center(
                           child: Text(
-                            'Edit',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                            builder: (context) => AuthPage(),
-                          ),
-                          (route) => false,
-                        );
-                      },
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Logout',
+                            'Register',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -315,5 +286,31 @@ class _AccountPageState extends State<AccountPage> {
       ),
       (route) => false,
     );
+  }
+
+  void regValidation() {
+    print('object1');
+    if (_formField.currentState!.validate()) {
+      print('object2');
+      CupertinoAlertDialog(
+        title: Text('Warning'),
+        content: Text('Are you sure your credentials are correct?'),
+        actions: <CupertinoDialogAction>[
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            onPressed: () {
+              // Navigator.pop(context);
+            },
+            child: Text('Return'),
+          ),
+          CupertinoDialogAction(
+            onPressed: () {
+              onConfirm();
+            },
+            child: Text('Absolutely'),
+          ),
+        ],
+      );
+    }
   }
 }

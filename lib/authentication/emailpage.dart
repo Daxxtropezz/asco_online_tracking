@@ -1,4 +1,4 @@
-import 'package:asco_online_tracking/frontend/authentication/verifypage.dart';
+import 'package:asco_online_tracking/authentication/verifypage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

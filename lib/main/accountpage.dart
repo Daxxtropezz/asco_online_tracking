@@ -1,27 +1,27 @@
-import 'package:asco_online_tracking/frontend/authentication/authpage.dart';
+import 'package:asco_online_tracking/authentication/authpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: "registrationpage",
+    title: "accountpage",
     theme: ThemeData(
       useMaterial3: false,
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: Colors.red,
       ),
     ),
-    home: RegistrationPage(),
+    home: AccountPage(),
   ));
 }
 
-class RegistrationPage extends StatefulWidget {
+class AccountPage extends StatefulWidget {
   @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _AccountPageState extends State<AccountPage> {
   final _formField = GlobalKey<FormState>();
   final userController = TextEditingController();
   final emailController = TextEditingController();
@@ -38,14 +38,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Icon(Icons.app_registration),
-            SizedBox(width: 8),
-            Text("Register to ASCo: Track"),
-          ],
-        ),
+        centerTitle: true,
+        title: Text("Account Settings"),
       ),
       body: Stack(
         children: [
@@ -70,6 +64,22 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Icon(
+                      Icons.account_circle,
+                      size: 100,
+                      color: Colors.red,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Daxxtropezz',
+                      style: TextStyle(
+                        fontSize: 21,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     TextFormField(
                       keyboardType: TextInputType.text,
                       controller: userController,
@@ -79,7 +89,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         prefixIcon: Icon(Icons.account_circle),
                       ),
                       validator: (value) {
-                        bool NumbersAndLetters = RegExp(r"^[A-Za-z0-9]+$").hasMatch(value!);
+                        bool NumbersAndLetters =
+                            RegExp(r"^[A-Za-z0-9]+$").hasMatch(value!);
                         if (value!.isEmpty) {
                           return "Please enter your username!";
                         } else if (!NumbersAndLetters) {
@@ -221,29 +232,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        print('object1');
                         if (_formField.currentState!.validate()) {
-                          print('object2');
-                          CupertinoAlertDialog(
-                            title: Text('Warning'),
-                            content: Text(
-                                'Are you sure your credentials are correct?'),
-                            actions: <CupertinoDialogAction>[
-                              CupertinoDialogAction(
-                                isDestructiveAction: true,
-                                onPressed: () {
-                                  // Navigator.pop(context);
-                                },
-                                child: Text('Return'),
-                              ),
-                              CupertinoDialogAction(
-                                onPressed: () {
-                                  onConfirm();
-                                },
-                                child: Text('Absolutely'),
-                              ),
-                            ],
-                          );
+                          print('object1');
                         }
                       },
                       child: Container(
@@ -254,7 +244,37 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                         child: Center(
                           child: Text(
-                            'Register',
+                            'Edit',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => AuthPage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Logout',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

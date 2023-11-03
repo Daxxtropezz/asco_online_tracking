@@ -1,11 +1,11 @@
-import 'package:asco_online_tracking/frontend/main/accountpage.dart';
-import 'package:asco_online_tracking/frontend/main/homepage.dart';
-import 'package:asco_online_tracking/frontend/logs/logs.dart';
+import 'package:asco_online_tracking/main/accountpage.dart';
+import 'package:asco_online_tracking/main/homepage.dart';
+import 'package:asco_online_tracking/logs/logs.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:asco_online_tracking/frontend/main/about.dart';
+import 'package:asco_online_tracking/main/about.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -113,16 +113,6 @@ class _SelectionPageState extends State<SelectionPage>
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionBubble(
           items: [
-            Bubble(
-              icon: Icons.dashboard,
-              iconColor: Colors.red,
-              title: 'Dashboard',
-              bubbleColor: Colors.white,
-              onPress: () {},
-              titleStyle: TextStyle(
-                color: Colors.red,
-              ),
-            ),
             Bubble(
               icon: Icons.account_circle,
               iconColor: Colors.red,

@@ -1,4 +1,4 @@
-import 'package:asco_online_tracking/frontend/logs/logs_refno.dart';
+import 'package:asco_online_tracking/logs/logs_refno.dart';
 import 'package:flutter/material.dart';
 
 void main() {
