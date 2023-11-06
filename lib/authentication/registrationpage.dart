@@ -288,29 +288,47 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 
-  void regValidation() {
+  Future<bool?> showRegConf(context) async {
+    final value = await showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('ASCo Registration'),
+            content: Text('are you sure that your credentials are correct?'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                style: ButtonStyle(
+                  iconColor: MaterialStatePropertyAll(Colors.red),
+                  backgroundColor: MaterialStatePropertyAll(Colors.white),
+                ),
+                child: Icon(Icons.close),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                style: ButtonStyle(
+                  iconColor: MaterialStatePropertyAll(Colors.green),
+                  backgroundColor: MaterialStatePropertyAll(Colors.white),
+                ),
+                child: Icon(Icons.check),
+              ),
+            ],
+          );
+        });
+    if (value != null) {
+      return Future.value(value);
+    } else {
+      return Future.value(false);
+    }
+  }
+
+  void regValidation() async {
     print('object1');
     if (_formField.currentState!.validate()) {
-      print('object2');
-      CupertinoAlertDialog(
-        title: Text('Warning'),
-        content: Text('Are you sure your credentials are correct?'),
-        actions: <CupertinoDialogAction>[
-          CupertinoDialogAction(
-            isDestructiveAction: true,
-            onPressed: () {
-              // Navigator.pop(context);
-            },
-            child: Text('Return'),
-          ),
-          CupertinoDialogAction(
-            onPressed: () {
-              onConfirm();
-            },
-            child: Text('Absolutely'),
-          ),
-        ],
-      );
+      final result = await showRegConf(context);
+      if (result == true) {
+        onConfirm();
+      }
     }
   }
 }

@@ -64,7 +64,56 @@ class _SelectionPageState extends State<SelectionPage>
       onWillPop: _onBackPressed,
       child: Scaffold(
         body: WillPopScope(
-          onWillPop: _onBackPressed,
+          onWillPop: () async {
+            final value = await showDialog<bool>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    backgroundColor: Colors.white,
+                    title: Row(
+                      children: [
+                        Icon(Icons.exit_to_app, color: Colors.redAccent),
+                        SizedBox(width: 5),
+                        Text(
+                          'ASCo: Track',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ],
+                    ),
+                    content: Text(
+                      'are you sure you want to exit?',
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                    ),
+                    actions: [
+                      ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop(false),
+                        style: ButtonStyle(
+                          iconColor: MaterialStatePropertyAll(Colors.red),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.white),
+                        ),
+                        child: Icon(Icons.close),
+                      ),
+                      ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        style: ButtonStyle(
+                          iconColor: MaterialStatePropertyAll(Colors.green),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.white),
+                        ),
+                        child: Icon(Icons.check),
+                      ),
+                    ],
+                  );
+                });
+            if (value != null) {
+              return Future.value(value);
+            } else {
+              return Future.value(false);
+            }
+          },
           child: Center(
             child: pageList[homeIndex],
           ),
@@ -123,7 +172,7 @@ class _SelectionPageState extends State<SelectionPage>
                   MaterialPageRoute(
                     builder: (context) => AccountPage(),
                   ),
-                      (route) => true,
+                  (route) => true,
                 );
               },
               titleStyle: TextStyle(

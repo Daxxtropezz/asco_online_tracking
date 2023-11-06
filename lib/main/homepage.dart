@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   double bRadius = 15.0;
 
   // increased margin between buttons
-  bool _doubleBackToExitPressedOnce = false;
+  // bool _doubleBackToExitPressedOnce = false;
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: EdgeInsets.zero,
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
-                                      BorderRadius.circular(bRadius),
+                                          BorderRadius.circular(bRadius),
                                     ),
                                   ),
                                   child: Align(
@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: EdgeInsets.zero,
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
-                                      BorderRadius.circular(bRadius),
+                                          BorderRadius.circular(bRadius),
                                     ),
                                   ),
                                   child: Align(
@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: EdgeInsets.zero,
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
-                                      BorderRadius.circular(bRadius),
+                                          BorderRadius.circular(bRadius),
                                     ),
                                   ),
                                   child: Align(
