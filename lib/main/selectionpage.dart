@@ -210,8 +210,8 @@ class _SelectionPageState extends State<SelectionPage>
           animation: _animation,
           onPress: () {
             _animController.isCompleted
-                ? _animController!.reverse()
-                : _animController!.forward();
+                ? _animController.reverse()
+                : _animController.forward();
             setState(() {
               isMenuOpen = !isMenuOpen;
               currentIcon = isMenuOpen ? Icons.arrow_circle_left : Icons.menu;

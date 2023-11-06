@@ -160,11 +160,13 @@ class _Scan2State extends State<Scan2> {
   void onPressed() async {
     List<String> pictures;
     try {
-      pictures = await CunningDocumentScanner.getPictures() ?? [];
+      pictures = await CunningDocumentScanner.getPictures(true) ?? [];
       if (!mounted) return;
       setState(() {
         _pictures = pictures;
       });
-    } catch (exception) {}
+    } catch (exception) {
+      print('object');
+    }
   }
 }

@@ -39,12 +39,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        centerTitle: true,
+        title: Column(
           children: [
-            // Icon(Icons.app_registration),
-            SizedBox(width: 8),
-            Text("Register to ASCo: Track"),
+            Text(
+              "ASCo: Track",
+              style: TextStyle(fontSize: 21.0),
+            ),
+            Text(
+              'Register',
+              style: TextStyle(color: Colors.grey, fontSize: 17.0),
+            )
           ],
         ),
       ),
@@ -83,11 +88,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       validator: (value) {
                         bool NumbersAndLetters =
                             RegExp(r"^[A-Za-z0-9]+$").hasMatch(value!);
-                        if (value!.isEmpty) {
+                        if (value.isEmpty) {
                           return "Please enter your username!";
                         } else if (!NumbersAndLetters) {
                           return "Please use numbers and letters only!";
                         }
+                        return null;
                       },
                     ),
                     SizedBox(
@@ -109,7 +115,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
                                 .hasMatch(value!);
                         bool isTextEntered =
-                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value);
                         if (value.isEmpty) {
                           return "Please enter your email address!";
                         } else if (isTextEntered) {
@@ -117,6 +123,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         } else if (!isEmailValid) {
                           return "Only exclusive email from asc is allowed!";
                         }
+                        return null;
                       },
                       onChanged: (value) {
                         eMailAdd = '$value';
@@ -146,6 +153,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         } else if (value.length < 10) {
                           return "Not an exclusive mobile number!";
                         }
+                        return null;
                         // else if (!isPhoneValid) {
                         //   return "Please enter the correct Mobile number!";
                         // }
@@ -187,6 +195,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             cPassController.value) {
                           return "The password doesn't match!";
                         }
+                        return null;
                       },
                       onFieldSubmitted: (value) {
                         FocusScope.of(context).requestFocus(passFocusNode);
@@ -225,6 +234,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             passController.value) {
                           return "The password doesn't match!";
                         }
+                        return null;
                       },
                       onFieldSubmitted: (value) {
                         regValidation();

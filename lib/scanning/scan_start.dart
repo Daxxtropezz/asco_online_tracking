@@ -6,10 +6,10 @@ import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 
 class Scan1 extends StatefulWidget {
   @override
-  State<Scan1> createState() => _Scan2State();
+  State<Scan1> createState() => _Scan1State();
 }
 
-class _Scan2State extends State<Scan1> {
+class _Scan1State extends State<Scan1> {
   var value = 0.5;
   List<String> _pictures = [];
 
@@ -185,11 +185,13 @@ class _Scan2State extends State<Scan1> {
   void onPressed() async {
     List<String> pictures;
     try {
-      pictures = await CunningDocumentScanner.getPictures() ?? [];
+      pictures = await CunningDocumentScanner.getPictures(true) ?? [];
       if (!mounted) return;
       setState(() {
         _pictures = pictures;
       });
-    } catch (exception) {}
+    } catch (exception) {
+      print('x');
+    }
   }
 }

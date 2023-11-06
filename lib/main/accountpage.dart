@@ -91,11 +91,12 @@ class _AccountPageState extends State<AccountPage> {
                       validator: (value) {
                         bool NumbersAndLetters =
                             RegExp(r"^[A-Za-z0-9]+$").hasMatch(value!);
-                        if (value!.isEmpty) {
+                        if (value.isEmpty) {
                           return "Please enter your username!";
                         } else if (!NumbersAndLetters) {
                           return "Please use numbers and letters only!";
                         }
+                        return null;
                       },
                     ),
                     SizedBox(
@@ -116,7 +117,7 @@ class _AccountPageState extends State<AccountPage> {
                             RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
                                 .hasMatch(value!);
                         bool isTextEntered =
-                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value);
                         if (value.isEmpty) {
                           return "Please enter your email address!";
                         } else if (isTextEntered) {
@@ -124,6 +125,7 @@ class _AccountPageState extends State<AccountPage> {
                         } else if (!isEmailValid) {
                           return "Only exclusive email from asc is allowed!";
                         }
+                        return null;
                       },
                       onChanged: (value) {
                         eMailAdd = '$value';
@@ -152,6 +154,7 @@ class _AccountPageState extends State<AccountPage> {
                         } else if (value.length < 10) {
                           return "Not an exclusive mobile number!";
                         }
+                        return null;
                         // else if (!isPhoneValid) {
                         //   return "Please enter the correct Mobile number!";
                         // }
@@ -192,6 +195,7 @@ class _AccountPageState extends State<AccountPage> {
                             cPassController.value) {
                           return "The password doesn't match!";
                         }
+                        return null;
                       },
                     ),
                     SizedBox(
@@ -225,6 +229,7 @@ class _AccountPageState extends State<AccountPage> {
                             passController.value) {
                           return "The password doesn't match!";
                         }
+                        return null;
                       },
                     ),
                     SizedBox(

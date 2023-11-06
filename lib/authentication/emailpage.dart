@@ -70,7 +70,7 @@ class _EmailPageState extends State<EmailPage> {
                             RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
                                 .hasMatch(value!);
                         bool isTextEntered =
-                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value);
                         if (value.isEmpty) {
                           return "Please enter email address!";
                         } else if (isTextEntered) {
@@ -78,6 +78,7 @@ class _EmailPageState extends State<EmailPage> {
                         } else if (!isEmailValid) {
                           return "Only exclusive email from asc is allowed!";
                         }
+                        return null;
                       },
                       onChanged: (value) {
                         eMailAdd = '$value';

@@ -85,6 +85,7 @@ class _PasswordPageState extends State<PasswordPage> {
                             cPassController.value) {
                           return "The passwords doesn't match!";
                         }
+                        return null;
                       },
                     ),
                     SizedBox(
@@ -118,6 +119,7 @@ class _PasswordPageState extends State<PasswordPage> {
                             passController.value) {
                           return "The passwords doesn't match!";
                         }
+                        return null;
                       },
                     ),
                     SizedBox(

@@ -31,12 +31,17 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        centerTitle: true,
+        title: Column(
           children: [
-            // Icon(Icons.login),
-            SizedBox(width: 8),
-            Text("Login to ASCo: Track"),
+            Text(
+              "ASCo: Track",
+              style: TextStyle(fontSize: 21.0),
+            ),
+            Text(
+              'Login',
+              style: TextStyle(color: Colors.grey, fontSize: 17.0),
+            )
           ],
         ),
       ),
@@ -84,21 +89,15 @@ class _LoginPageState extends State<LoginPage> {
                             RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
                                 .hasMatch(value!);
                         bool isTextEntered =
-                            RegExp(r"^[A-Za-z]+$").hasMatch(value!);
-                        // if (value.isEmpty) {
-                        //   return "Please enter email address!";
-                        // } else if (isTextEntered) {
-                        //   return "Please enter a valid email address!";
-                        // } else if (!isEmailValid) {
-                        //   return "Only exclusive email from asc is allowed!";
-                        // }
-                        value.isEmpty
-                            ? "Please enter your email address!"
-                            : isTextEntered
-                                ? "Please enter a valid email address"
-                                : !isEmailValid
-                                    ? "Only exclusive email from asc is allowed!"
-                                    : null;
+                            RegExp(r"^[A-Za-z]+$").hasMatch(value);
+                        if (value.isEmpty) {
+                          return "Please enter email address!";
+                        } else if (isTextEntered) {
+                          return "Please enter a valid email address!";
+                        } else if (!isEmailValid) {
+                          return "Only exclusive email from asc is allowed!";
+                        }
+                        return null;
                       },
                     ),
                     SizedBox(
@@ -127,11 +126,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       validator: (value) {
-                        value!.isEmpty
-                            ? "Please enter your password!"
-                            : passController.text.length < 6
-                                ? "Your password's length should be more than 6 characters!"
-                                : null;
+                        if (value!.isEmpty) {
+                          return "Please enter your password!";
+                        } else if (passController.text.length < 6) {
+                          return "Your password's length should be more than 6 characters!";
+                        }
+                        return null;
                       },
                       onFieldSubmitted: (value) {
                         loginValidation();
