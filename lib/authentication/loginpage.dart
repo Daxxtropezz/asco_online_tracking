@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Forgot password?',
+                          'Cannot get in?',
                           style: TextStyle(
                             fontSize: 14,
                           ),
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: Text(
-                            'Reset Password',
+                            'Regain Access Here!',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,

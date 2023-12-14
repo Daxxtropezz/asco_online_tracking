@@ -103,7 +103,7 @@ class _Scan1State extends State<Scan1> {
                             children: _pictures.map((picture) {
                               return ClipRRect(
                                 borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: 400,
                                   height: 400,
                                   child: Image.file(
@@ -131,7 +131,7 @@ class _Scan1State extends State<Scan1> {
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(8, 20, 8, 8),
-                        child: Container(
+                        child: SizedBox(
                           width: 275.0,
                           height: 55.0,
                           child: ElevatedButton(

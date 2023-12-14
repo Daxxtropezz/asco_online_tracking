@@ -1,5 +1,4 @@
 import 'package:asco_online_tracking/authentication/authpage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -128,7 +127,7 @@ class _AccountPageState extends State<AccountPage> {
                         return null;
                       },
                       onChanged: (value) {
-                        eMailAdd = '$value';
+                        eMailAdd = value;
                       },
                     ),
                     SizedBox(

@@ -183,7 +183,7 @@ class _Scan3State extends State<Scan3> {
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(8, 20, 8, 8),
-                        child: Container(
+                        child: SizedBox(
                           width: 275.0,
                           height: 55.0,
                           child: ElevatedButton(

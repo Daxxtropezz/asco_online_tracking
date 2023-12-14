@@ -1,5 +1,4 @@
 import 'package:asco_online_tracking/authentication/authpage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -126,7 +125,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         return null;
                       },
                       onChanged: (value) {
-                        eMailAdd = '$value';
+                        eMailAdd = value;
                       },
                     ),
                     SizedBox(
@@ -139,7 +138,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         labelText: "Mobile Number",
                         border: UnderlineInputBorder(),
                         prefixIcon: Icon(Icons.phone_android),
-                        prefixText: prefixNumber + " ",
+                        prefixText: "$prefixNumber ",
                         counterText: '',
                         prefixStyle:
                             TextStyle(color: Colors.black, fontSize: 16),
@@ -275,27 +274,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 
-  void onConfirm() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          "Registration Success!\nPlease click the activation link we've sent to your email!",
-          style: TextStyle(
-            fontSize: 16,
-          ),
-        ),
-        duration: Duration(
-          seconds: 2,
-        ),
-      ),
-    );
-    print('$phoneNumber $eMailAdd');
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => AuthPage(),
-      ),
-      (route) => false,
-    );
+  void regValidation() async {
+    if (_formField.currentState!.validate()) {
+      final result = await showRegConf(context);
+      if (result == true) {
+        onConfirm();
+      }
+    }
   }
 
   Future<bool?> showRegConf(context) async {
@@ -332,13 +317,26 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
   }
 
-  void regValidation() async {
-    print('object1');
-    if (_formField.currentState!.validate()) {
-      final result = await showRegConf(context);
-      if (result == true) {
-        onConfirm();
-      }
-    }
+  void onConfirm() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Registration Success!\nPlease click the activation link we've sent to your email!",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        duration: Duration(
+          seconds: 2,
+        ),
+      ),
+    );
+    print('$phoneNumber $eMailAdd');
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => AuthPage(),
+      ),
+      (route) => false,
+    );
   }
 }

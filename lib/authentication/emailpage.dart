@@ -81,7 +81,10 @@ class _EmailPageState extends State<EmailPage> {
                         return null;
                       },
                       onChanged: (value) {
-                        eMailAdd = '$value';
+                        eMailAdd = value;
+                      },
+                      onFieldSubmitted: (value) {
+                        submissionAuth();
                       },
                     ),
                     SizedBox(
@@ -89,28 +92,7 @@ class _EmailPageState extends State<EmailPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        if (_formField.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "Please click the activation link we've sent to your number!",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              duration: Duration(
-                                seconds: 2,
-                              ),
-                            ),
-                          );
-                          print(' $eMailAdd');
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => VerifyPage(),
-                            ),
-                            (route) => true,
-                          );
-                        }
+                        submissionAuth();
                       },
                       child: Container(
                         height: 50,
@@ -138,5 +120,30 @@ class _EmailPageState extends State<EmailPage> {
         ],
       ),
     );
+  }
+
+  void submissionAuth() {
+    if (_formField.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Please click the activation link we've sent to your number!",
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+          duration: Duration(
+            seconds: 2,
+          ),
+        ),
+      );
+      print(' $eMailAdd');
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => VerifyPage(),
+        ),
+        (route) => true,
+      );
+    }
   }
 }
