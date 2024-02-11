@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:asco_online_tracking/scanning/scan_examine.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:cunning_document_scanner/cunning_document_scanner.dart';
+// import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 
 class Scan2 extends StatefulWidget {
   @override
@@ -64,7 +64,7 @@ class _Scan2State extends State<Scan2> {
               left: 0,
               right: 0,
               child: Image.asset(
-                'assets/bg_main.png',
+                'assets/images/bg_main.png',
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -160,10 +160,10 @@ class _Scan2State extends State<Scan2> {
   void onPressed() async {
     List<String> pictures;
     try {
-      pictures = await CunningDocumentScanner.getPictures(true) ?? [];
+      // pictures = await CunningDocumentScanner.getPictures(true) ?? [];
       if (!mounted) return;
       setState(() {
-        _pictures = pictures;
+        // _pictures = pictures;
       });
     } catch (exception) {
       print('object');

@@ -19,7 +19,7 @@ void main() {
 class LogsRefNoApp extends StatelessWidget {
   final String referenceNo;
 
-  const LogsRefNoApp({Key? key, required this.referenceNo}) : super(key: key);
+  const LogsRefNoApp({super.key, required this.referenceNo});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class LogsRefNoApp extends StatelessWidget {
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/bg_main.png',
+              'assets/images/bg_main.png',
               fit: BoxFit.fitWidth,
             ),
           ),

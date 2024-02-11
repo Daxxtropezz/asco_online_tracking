@@ -1,10 +1,8 @@
-import 'dart:developer';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:livespeechtotext/livespeechtotext.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +34,7 @@ class _ARecord1State extends State<ARecord1> {
           () => _localeDisplayName = value,
         ));
 
-    binding().whenComplete(() => null);
+    // binding().whenComplete(() => null);
 
     _recognisedText = '';
   }
@@ -62,7 +60,7 @@ class _ARecord1State extends State<ARecord1> {
               if (!microphoneGranted)
                 ElevatedButton(
                   onPressed: () {
-                    binding();
+                    // binding();e
                   },
                   child: const Text("Check Permissions"),
                 ),
@@ -98,62 +96,62 @@ class _ARecord1State extends State<ARecord1> {
     );
   }
 
-  Future<dynamic> binding() async {
-    onSuccessEvent?.cancel();
-
-    return Future.wait([]).then((_) async {
-      // Check if the user has already granted microphone permission.
-      var permissionStatus = await Permission.microphone.status;
-
-      // If the user has not granted permission, prompt them for it.
-      if (!microphoneGranted) {
-        await Permission.microphone.request();
-
-        // Check if the user has already granted the permission.
-        permissionStatus = await Permission.microphone.status;
-
-        if (!permissionStatus.isGranted) {
-          return Future.error('Microphone access denied');
-        }
-      }
-
-      // Check if the user has already granted speech permission.
-      if (Platform.isIOS) {
-        var speechStatus = await Permission.speech.status;
-
-        // If the user has not granted permission, prompt them for it.
-        if (!microphoneGranted) {
-          await Permission.speech.request();
-
-          // Check if the user has already granted the permission.
-          speechStatus = await Permission.speech.status;
-
-          if (!speechStatus.isGranted) {
-            return Future.error('Speech access denied');
-          }
-        }
-      }
-
-      return Future.value(true);
-    }).then((value) {
-      microphoneGranted = true;
-
-      // listen to event "success"
-      onSuccessEvent =
-          _liveSpeechToTextPlugin.addEventListener("success", (value) {
-        if (value.runtimeType != String) return;
-        if ((value as String).isEmpty) return;
-
-        setState(() {
-          _recognisedText = value;
-        });
-      });
-
-      setState(() {});
-    }).onError((error, stackTrace) {
-      // toast
-      log(error.toString());
-      // open app setting
-    });
-  }
+  // Future<dynamic> binding() async {
+  //   onSuccessEvent?.cancel();
+  //
+  //   return Future.wait([]).then((_) async {
+  //     // Check if the user has already granted microphone permission.
+  //     var permissionStatus = await Permission.microphone.status;
+  //
+  //     // If the user has not granted permission, prompt them for it.
+  //     if (!microphoneGranted) {
+  //       await Permission.microphone.request();
+  //
+  //       // Check if the user has already granted the permission.
+  //       permissionStatus = await Permission.microphone.status;
+  //
+  //       if (!permissionStatus.isGranted) {
+  //         return Future.error('Microphone access denied');
+  //       }
+  //     }
+  //
+  //     // Check if the user has already granted speech permission.
+  //     if (Platform.isIOS) {
+  //       var speechStatus = await Permission.speech.status;
+  //
+  //       // If the user has not granted permission, prompt them for it.
+  //       if (!microphoneGranted) {
+  //         await Permission.speech.request();
+  //
+  //         // Check if the user has already granted the permission.
+  //         speechStatus = await Permission.speech.status;
+  //
+  //         if (!speechStatus.isGranted) {
+  //           return Future.error('Speech access denied');
+  //         }
+  //       }
+  //     }
+  //
+  //     return Future.value(true);
+  //   }).then((value) {
+  //     microphoneGranted = true;
+  //
+  //     // listen to event "success"
+  //     onSuccessEvent =
+  //         _liveSpeechToTextPlugin.addEventListener("success", (value) {
+  //       if (value.runtimeType != String) return;
+  //       if ((value as String).isEmpty) return;
+  //
+  //       setState(() {
+  //         _recognisedText = value;
+  //       });
+  //     });
+  //
+  //     setState(() {});
+  //   }).onError((error, stackTrace) {
+  //     // toast
+  //     log(error.toString());
+  //     // open app setting
+  //   });
+  // }
 }

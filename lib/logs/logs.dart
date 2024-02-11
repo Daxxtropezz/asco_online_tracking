@@ -16,7 +16,7 @@ void main() {
 }
 
 class LogsApp extends StatefulWidget {
-  LogsApp({Key? key}) : super(key: key);
+  LogsApp({super.key});
 
   @override
   _LogsAppState createState() => _LogsAppState();
@@ -81,7 +81,7 @@ class _LogsAppState extends State<LogsApp> {
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/bg_main.png',
+              'assets/images/bg_main.png',
               fit: BoxFit.fitWidth,
             ),
           ),

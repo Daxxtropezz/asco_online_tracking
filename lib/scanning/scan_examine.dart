@@ -59,7 +59,7 @@ class _Scan3State extends State<Scan3> {
               left: 0,
               right: 0,
               child: Image.asset(
-                'assets/bg_main.png',
+                'assets/images/bg_main.png',
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -139,7 +139,7 @@ class _Scan3State extends State<Scan3> {
                               ],
                             ),
                             after: Image.asset(
-                              'assets/asc_logo.png',
+                              'assets/images/asc_logo.png',
                               fit: BoxFit.fitWidth,
                               height: 400,
                               width: 400,

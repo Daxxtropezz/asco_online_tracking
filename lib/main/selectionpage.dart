@@ -39,7 +39,7 @@ class _SelectionPageState extends State<SelectionPage>
 
   late Animation<double> _animation;
   late AnimationController _animController;
-  IconData currentIcon = Icons.menu;
+  IconData currentIcon = Icons.arrow_circle_right;
   Color currentColor = Colors.red;
   Color currentBG = Colors.white;
   bool isMenuOpen = false;
@@ -214,7 +214,7 @@ class _SelectionPageState extends State<SelectionPage>
                 : _animController.forward();
             setState(() {
               isMenuOpen = !isMenuOpen;
-              currentIcon = isMenuOpen ? Icons.arrow_circle_left : Icons.menu;
+              currentIcon = isMenuOpen ? Icons.arrow_circle_left : Icons.arrow_circle_right;
               currentColor = isMenuOpen ? Colors.white : Colors.red;
               currentBG = isMenuOpen ? Colors.red : Colors.white;
             });

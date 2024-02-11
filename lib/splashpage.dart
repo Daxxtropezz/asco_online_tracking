@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:asco_online_tracking/authentication/authpage.dart';
+import 'package:asco_online_tracking/authentication/loginpage.dart';
+import 'package:asco_online_tracking/main/landingpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,21 +17,17 @@ void main() {
   ));
 }
 
-class SplashPage extends StatefulWidget {
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
+class SplashPage extends StatelessWidget {
   int duration = 1000;
-  String splash_logo = 'assets/asc_tv_logo.png';
+
+  String splash_logo = 'assets/images/asc_tv_logo.png';
 
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       duration: duration,
       splash: splash_logo,
-      nextScreen: AuthPage(),
+      nextScreen: LandingPage(),
       splashTransition: SplashTransition.slideTransition,
       backgroundColor: Colors.white,
       splashIconSize: 150,

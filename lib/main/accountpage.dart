@@ -47,7 +47,7 @@ class _AccountPageState extends State<AccountPage> {
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/bg_main.png',
+              'assets/images/bg_main.png',
               fit: BoxFit.fitWidth,
             ),
           ),

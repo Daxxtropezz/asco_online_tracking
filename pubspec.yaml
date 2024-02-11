@@ -39,7 +39,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   before_after: ^3.0.0+1
   auto_size_text: ^3.0.0
-  cunning_document_scanner: ^1.1.2
+#  cunning_document_scanner: ^1.1.4
   livespeechtotext: ^1.0.9
   curved_labeled_navigation_bar: ^2.0.2
   floating_action_bubble: ^1.1.3
@@ -50,8 +50,8 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: "^0.13.1"
   searchable_listview: ^2.7.1
-  flutter_platform_widgets: ^3.3.5
-  flutter_lints: ^2.0.3
+  flutter_platform_widgets: ^6.0.2
+  flutter_lints: ^3.0.1
 
 flutter_icons:
   android: true
@@ -76,11 +76,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/bg_main.png
-    - assets/asc_logo.png
-    - assets/asc_logo_orig.png
-    - assets/asc_tv_logo.png
-    - assets/asc_video.mp4
+    - assets/images/bg_main.png
+    - assets/images/asc_logo.png
+    - assets/images/asc_logo_orig.png
+    - assets/images/asc_tv_logo.png
+    - assets/videos/asc_video.mp4
 
   # To add assets to your application, add an assets section, like this:
   # assets:

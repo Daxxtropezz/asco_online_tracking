@@ -34,7 +34,7 @@ class _AboutAppState extends State<AboutApp> {
               left: 0,
               right: 0,
               child: Image.asset(
-                'assets/bg_main.png',
+                'assets/images/bg_main.png',
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -51,7 +51,7 @@ class _AboutAppState extends State<AboutApp> {
                     padding: EdgeInsets.all(5.0),
                     child: Center(
                       child: Image.asset(
-                        'assets/asc_tv_logo.png',
+                        'assets/images/asc_tv_logo.png',
                         width: 100,
                       ),
                     ),
