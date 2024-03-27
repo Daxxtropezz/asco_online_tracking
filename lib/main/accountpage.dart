@@ -1,4 +1,5 @@
-import 'package:asco_online_tracking/authentication/authpage.dart';
+import 'package:asco_online_tracking/junks/authpage.dart';
+import 'package:asco_online_tracking/authentication/loginpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -265,7 +266,7 @@ class _AccountPageState extends State<AccountPage> {
                       onTap: () {
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                            builder: (context) => AuthPage(),
+                            builder: (context) => LoginPage(),
                           ),
                           (route) => false,
                         );

@@ -1,4 +1,3 @@
-import 'package:asco_online_tracking/authentication/authpage.dart';
 import 'package:asco_online_tracking/authentication/loginpage.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +29,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final cPassController = TextEditingController();
   final passFocusNode = FocusNode();
   final prefixNumber = '+63';
+  String validationButton = 'Submit';
   String? eMailAdd;
   String? phoneNumber;
   bool passToggle = true;
@@ -38,270 +38,311 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Column(
-      //     children: [
-      //       Text(
-      //         "ASCo: Track",
-      //         style: TextStyle(fontSize: 21.0),
-      //       ),
-      //       Text(
-      //         'Login',
-      //         style: TextStyle(color: Colors.grey, fontSize: 17.0),
-      //       )
-      //     ],
-      //   ),
-      // ),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Stack(
-          children: [
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                'assets/images/bg_main.png',
-                fit: BoxFit.fitWidth,
+      backgroundColor: Colors.red.shade700,
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            colors: [
+              Colors.black.withOpacity(0.3),
+              Colors.red.shade700.withOpacity(0.9),
+            ],
+          ),
+        ),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width / 1.666,
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Image.asset(
+                  'assets/images/bg_main.png',
+                  fit: BoxFit.fitWidth,
+                ),
               ),
-            ),
-            Container(
-              color: Colors.white.withOpacity(0.8),
-            ),
-            SingleChildScrollView(
-              child: Padding(
+              // Container(
+              //   color: Colors.white.withOpacity(0.8),
+              // ),
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 60),
-                child: Form(
-                  key: _formField,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 15,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'assets/images/asc_tv_logo.png',
+                      scale: 9.5,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "ASCo: Track",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 31,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1,
+                        wordSpacing: 2,
                       ),
-                      Image.asset(
-                        'assets/images/asc_tv_logo.png',
-                        scale: 9.5,
+                    ),
+                    Text(
+                      'Register',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                        fontSize: 20,
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "ASCo: Track",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 31,
-                          color: Colors.red,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1,
-                          wordSpacing: 2,
+                    ),
+                  ],
+                ),
+              ),
+              Positioned.fill(
+                top: 245,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.9),
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(85),
+                    ),
+                    border: Border.all(
+                      color: Colors.black.withOpacity(.8),
+                      width: 2.0,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 45,
                         ),
-                      ),
-                      Text(
-                        'Register',
-                        style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
-                        controller: userController,
-                        decoration: InputDecoration(
-                          labelText: "Username",
-                          border: UnderlineInputBorder(),
-                          prefixIcon: Icon(Icons.account_circle),
-                        ),
-                        validator: (value) {
-                          bool NumbersAndLetters =
-                              RegExp(r"^[A-Za-z0-9]+$").hasMatch(value!);
-                          if (value.isEmpty) {
-                            return "Please enter your username!";
-                          } else if (!NumbersAndLetters) {
-                            return "Please use numbers and letters only!";
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.emailAddress,
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          suffixStyle:
-                              TextStyle(color: Colors.black, fontSize: 16),
-                          border: UnderlineInputBorder(),
-                          prefixIcon: Icon(Icons.email),
-                        ),
-                        validator: (value) {
-                          bool isEmailValid =
-                              RegExp(r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
-                                  .hasMatch(value!);
-                          bool isTextEntered =
-                              RegExp(r"^[A-Za-z]+$").hasMatch(value);
-                          if (value.isEmpty) {
-                            return "Please enter your email address!";
-                          } else if (isTextEntered) {
-                            return "Please enter a valid email address!";
-                          } else if (!isEmailValid) {
-                            return "Only exclusive email from asc is allowed!";
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          eMailAdd = value;
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          labelText: "Mobile Number",
-                          border: UnderlineInputBorder(),
-                          prefixIcon: Icon(Icons.phone_android),
-                          prefixText: "$prefixNumber ",
-                          counterText: '',
-                          prefixStyle:
-                              TextStyle(color: Colors.black, fontSize: 16),
-                        ),
-                        validator: (value) {
-                          // bool isPhoneValid =
-                          //     RegExp(r"(^(?:[+0]9)?[0-9]{11,13}$)")
-                          //         .hasMatch(value!);
-                          if (value!.isEmpty) {
-                            return "Please enter your mobile number!";
-                          } else if (value.length < 10) {
-                            return "Not an exclusive mobile number!";
-                          }
-                          return null;
-                          // else if (!isPhoneValid) {
-                          //   return "Please enter the correct Mobile number!";
-                          // }
-                        },
-                        onChanged: (value) {
-                          phoneNumber = '$prefixNumber$value';
-                        },
-                        maxLength: 10,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
-                        controller: passController,
-                        obscureText: passToggle,
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          border: UnderlineInputBorder(),
-                          prefixIcon: Icon(Icons.lock),
-                          suffixIcon: InkWell(
-                            onTap: () {
-                              setState(() {
-                                passToggle = !passToggle;
-                              });
-                            },
-                            child: Icon(passToggle
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter your password!";
-                          } else if (passController.text.length < 6) {
-                            return "Your password's length should be more than 6 characters!";
-                          } else if (passController.value !=
-                              cPassController.value) {
-                            return "The password doesn't match!";
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context).requestFocus(passFocusNode);
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        focusNode: passFocusNode,
-                        textInputAction: TextInputAction.done,
-                        keyboardType: TextInputType.text,
-                        controller: cPassController,
-                        obscureText: cPassToggle,
-                        decoration: InputDecoration(
-                          labelText: "Confirm Password",
-                          border: UnderlineInputBorder(),
-                          prefixIcon: Icon(Icons.lock),
-                          suffixIcon: InkWell(
-                            onTap: () {
-                              setState(() {
-                                cPassToggle = !cPassToggle;
-                              });
-                            },
-                            child: Icon(cPassToggle
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter your password!";
-                          } else if (cPassController.text.length < 6) {
-                            return "Your password's length should be more than 6 characters!";
-                          } else if (cPassController.value !=
-                              passController.value) {
-                            return "The password doesn't match!";
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (value) {
-                          regValidation();
-                        },
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          regValidation();
-                        },
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Submit',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                        child: Form(
+                          key: _formField,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextFormField(
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.emailAddress,
+                                controller: emailController,
+                                decoration: InputDecoration(
+                                  hintText: "Email",
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  // suffixIcon: InkWell(
+                                  //   onTap: () {
+                                  //     setState(() {
+                                  //       passToggle = !passToggle;
+                                  //     });
+                                  //   },
+                                  //   child: Icon(
+                                  //     passToggle
+                                  //         ? Icons.check_circle
+                                  //         : Icons.close_rounded,
+                                  //     color: Colors.red.shade700,
+                                  //   ),
+                                  // ),
+                                  prefixIcon: Icon(
+                                    Icons.email,
+                                    color: Colors.red.shade700,
+                                  ),
+                                ),
+                                validator: (value) {
+                                  bool isEmailValid = RegExp(
+                                          r"^[A-Za-z0-9._%+-]+@asc\.com\.ph$")
+                                      .hasMatch(value!);
+                                  bool isTextEntered =
+                                      RegExp(r"^[A-Za-z]+$").hasMatch(value);
+                                  if (value.isEmpty) {
+                                    return "Please enter email address!";
+                                  } else if (isTextEntered) {
+                                    return "Please enter a valid email address!";
+                                  } else if (!isEmailValid) {
+                                    return "Only exclusive email from asc is allowed!";
+                                  }
+                                  return null;
+                                },
                               ),
-                            ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              TextFormField(
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.text,
+                                controller: passController,
+                                obscureText: passToggle,
+                                decoration: InputDecoration(
+                                  hintText: "Password",
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: Colors.red.shade700,
+                                  ),
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        passToggle = !passToggle;
+                                      });
+                                    },
+                                    child: Icon(
+                                      passToggle
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.red.shade700,
+                                    ),
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Please enter your password!";
+                                  } else if (passController.text.length < 6) {
+                                    return "Your password's length should be more than 6 characters!";
+                                  } else if (passController.value !=
+                                      cPassController.value) {
+                                    return "The password doesn't match!";
+                                  }
+                                  return null;
+                                },
+                                onFieldSubmitted: (value) {
+                                  FocusScope.of(context)
+                                      .requestFocus(passFocusNode);
+                                },
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              TextFormField(
+                                focusNode: passFocusNode,
+                                textInputAction: TextInputAction.done,
+                                keyboardType: TextInputType.text,
+                                controller: cPassController,
+                                obscureText: cPassToggle,
+                                decoration: InputDecoration(
+                                  hintText: "Confirm Password",
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: Colors.red.shade700,
+                                  ),
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        cPassToggle = !cPassToggle;
+                                      });
+                                    },
+                                    child: Icon(
+                                      cPassToggle
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.red.shade700,
+                                    ),
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Please enter your password!";
+                                  } else if (cPassController.text.length < 6) {
+                                    return "Your password's length should be more than 6 characters!";
+                                  } else if (cPassController.value !=
+                                      passController.value) {
+                                    return "The password doesn't match!";
+                                  }
+                                  return null;
+                                },
+                                onFieldSubmitted: (value) {
+                                  regValidation();
+                                },
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  regValidation();
+                                },
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red.shade700,
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                      color: Colors.black.withOpacity(.7),
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      validationButton,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginPage(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                },
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(.7),
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Return to Login',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -354,7 +395,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          "Registration Success!\nPlease click the activation link we've sent to your email!",
+          "Registration Success!\nYou can login now!",
           style: TextStyle(
             fontSize: 16,
           ),

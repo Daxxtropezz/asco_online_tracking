@@ -1,6 +1,6 @@
 import 'package:asco_online_tracking/main/accountpage.dart';
 import 'package:asco_online_tracking/main/homepage.dart';
-import 'package:asco_online_tracking/logs/logs.dart';
+import 'package:asco_online_tracking/junks/logs.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
